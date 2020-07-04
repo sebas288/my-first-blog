@@ -28,7 +28,7 @@ Incluyendo otra URLconf
 "" " """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from locallibrary.views import saludo, despedida, dameFecha, calcularEdad
 
 
@@ -38,5 +38,7 @@ urlpatterns = [
     path('saludo/', saludo),
     path('chao/' , despedida), #'chao/' es el nombre de la url , despedida es el nombre de la función
     path('fecha/' , dameFecha),
+    path('' , include('blog.urls')),
+    
 ]
 
