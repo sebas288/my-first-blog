@@ -1,25 +1,13 @@
-<html>
-    <head>
-        <title>Mi Primera App</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="admin">Django Nani Blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-    <h1> hola {{ posts }}</h1>
-
-    <div>
-        <h1><a href="/">Django Sebas Blog</a></h1>
-    </div>
-    
+{% block content %}
     {% for post in posts %}
-        <div>
-            <p> publicado: {{ post.created_date }}</p>
-            <h2><a href="">{{ post.title }}</a></h2>
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
-            <p>Autor {{post.author}}</p>
         </div>
     {% endfor %}
-    </body>
-</html>
+{% endblock %}
